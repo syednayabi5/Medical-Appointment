@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Rahat Care</title>
+<!--    <link rel="stylesheet" th:href="@{/css/style.css}">-->
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+<!-- Header & Navigation -->
+<header>
+    <nav class="container">
+        <a href="/" class="logo">
+            <div class="logo-icon">⚕</div>
+            Rahat Care
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/book-appointment">Book Appointment</a></li>
+            <li><a href="/appointments">My Appointments</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<div class="container" style="padding: 3rem 0;">
+    <h1 class="section-title">Complete Your Payment</h1>
+
+    <div id="alertContainer"></div>
+
+    <div class="form-container">
+        <!-- Payment Summary -->
+        <div class="payment-summary">
+            <h3 style="margin-bottom: 1.5rem; font-family: 'Crimson Pro', serif;">
+                💳 Payment Summary
+            </h3>
+            <div class="payment-item">
+                <span>Patient Name:</span>
+                <span id="summaryPatientName">-</span>
+            </div>
+            <div class="payment-item">
+                <span>Doctor:</span>
+                <span id="summaryDoctor">-</span>
+            </div>
+            <div class="payment-item">
+                <span>Department:</span>
+                <span id="summaryDepartment">-</span>
+            </div>
+            <div class="payment-item">
+                <span>Date & Time:</span>
+                <span id="summaryDateTime">-</span>
+            </div>
+            <div class="payment-item">
+                <span>Consultation Fee:</span>
+                <span id="summaryFee">-</span>
+            </div>
+            <div class="payment-total">
+                <div class="payment-item" style="border: none; margin: 0;">
+                    <span>Total Amount:</span>
+                    <span id="totalAmount">$0.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Method Selection -->
+        <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; font-family: 'Crimson Pro', serif;">
+            Select Payment Method
+        </h3>
+
+        <div class="form-group">
+            <label for="paymentMethod">Payment Method *</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="CREDIT_CARD">Credit Card</option>
+                <option value="DEBIT_CARD">Debit Card</option>
+                <option value="UPI">UPI</option>
+                <option value="NET_BANKING">Net Banking</option>
+                <option value="WALLET">Digital Wallet</option>
+            </select>
+        </div>
+
+        <!-- PayPal Card Element -->
+        <div id="cardPaymentSection">
+            <h3 style="color: var(--primary-color); margin: 2rem 0 1.5rem; font-family: 'Crimson Pro', serif;">
+                Enter Card Details
+            </h3>
+
+            <div class="form-group">
+                <label>Card Information</label>
+                <div id="card-element"></div>
+                <div id="card-errors" style="color: var(--danger-color); margin-top: 0.5rem;"></div>
+            </div>
+        </div>
+
+        <!-- Alternative Payment Methods Info -->
+        <div id="alternativePaymentInfo" style="display: none;">
+            <div class="alert alert-info">
+                <strong>Note:</strong> For UPI, Net Banking, and Wallet payments, you will be redirected to the respective payment gateway.
+                <br><br>
+                In this demo, please use <strong>Credit Card</strong> or <strong>Debit Card</strong> for actual payment processing.
+                <br><br>
+                <strong>Test Card Number:</strong> 4242 4242 4242 4242<br>
+                <strong>Expiry:</strong> Any future date<br>
+                <strong>CVC:</strong> Any 3 digits
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div style="text-align: center; margin-top: 2rem;">
+            <button type="button" class="btn btn-success" id="paymentBtn">
+                Pay Now
+            </button>
+        </div>
+
+        <div style="text-align: center; margin-top: 1rem;">
+            <p style="color: var(--text-light); font-size: 0.9rem;">
+                🔒 Your payment is secure and encrypted
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Rahat Care - Medical Appointment System. All rights reserved.</p>
+    </div>
+</footer>
+
+<!--<script th:src="@{/js/payment.js}"></script>-->
+<script src="/payment.js"></script>
+</body>
+</html>
+

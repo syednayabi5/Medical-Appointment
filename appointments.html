@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Appointments - MediCare</title>
+<!--    <link rel="stylesheet" th:href="@{/css/style.css}">-->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<!-- Header & Navigation -->
+<header>
+    <nav class="container">
+        <a href="/" class="logo">
+            <div class="logo-icon">⚕</div>
+            MediCare
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/book-appointment">Book Appointment</a></li>
+            <li><a href="/appointments">My Appointments</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<div class="container" style="padding: 3rem 0;">
+    <h1 class="section-title">My Appointments</h1>
+
+    <div id="alertContainer"></div>
+
+    <div id="appointmentsContainer" style="margin-top: 2rem;">
+        <!-- Appointments will be loaded here -->
+        <div style="text-align: center; padding: 3rem;">
+            <div class="loading"></div>
+            <p style="margin-top: 1rem; color: var(--text-light);">Loading appointments...</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Rahat Care - Medical Appointment System. All rights reserved.</p>
+    </div>
+</footer>
+
+<!--<script th:src="@{/js/appointments.js}"></script>-->
+<script src="/appointments.js"></script>
+</body>
+</html>
+

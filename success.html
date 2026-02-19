@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed - MediCare</title>
+<!--    <link rel="stylesheet" th:href="@{/css/style.css}">-->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<!-- Header & Navigation -->
+<header>
+    <nav class="container">
+        <a href="/" class="logo">
+            <div class="logo-icon">⚕</div>
+            Rahat Care
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/book-appointment">Book Appointment</a></li>
+            <li><a href="/appointments">My Appointments</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Success Content -->
+<div class="container" style="padding: 3rem 0; text-align: center;">
+    <div class="form-container" style="max-width: 600px;">
+        <div style="font-size: 5rem; margin-bottom: 1rem;">✅</div>
+        <h1 style="color: var(--success-color); font-family: 'Crimson Pro', serif; font-size: 2.5rem; margin-bottom: 1rem;">
+            Appointment Confirmed!
+        </h1>
+        <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 2rem;">
+            Your appointment has been successfully booked and payment has been received.
+        </p>
+
+        <div style="background: var(--light-bg); padding: 2rem; border-radius: 12px; margin: 2rem 0; text-align: left;">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem; font-family: 'Crimson Pro', serif;">
+                Appointment Details
+            </h3>
+            <div style="margin-bottom: 0.8rem;">
+                <strong>Appointment ID:</strong> <span id="appointmentId">-</span>
+            </div>
+            <div style="margin-bottom: 0.8rem;">
+                <strong>Patient:</strong> <span id="patientName">-</span>
+            </div>
+            <div style="margin-bottom: 0.8rem;">
+                <strong>Doctor:</strong> <span id="doctorName">-</span>
+            </div>
+            <div style="margin-bottom: 0.8rem;">
+                <strong>Department:</strong> <span id="department">-</span>
+            </div>
+            <div style="margin-bottom: 0.8rem;">
+                <strong>Date & Time:</strong> <span id="dateTime">-</span>
+            </div>
+            <div>
+                <strong>Amount Paid:</strong> <span id="amountPaid" style="color: var(--success-color);">-</span>
+            </div>
+        </div>
+
+        <div class="alert alert-info" style="text-align: left;">
+            <strong>📧 Confirmation Email Sent</strong><br>
+            A confirmation email with all the details has been sent to your registered email address.
+            <br><br>
+            <strong>💡 What's Next?</strong><br>
+            • Please arrive 10 minutes before your scheduled time<br>
+            • Bring a valid ID and any previous medical records<br>
+            • You can reschedule or cancel up to 24 hours before the appointment
+        </div>
+
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="/appointments" class="btn btn-primary">View My Appointments</a>
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Rahat Care - Medical Appointment System. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Get appointment data from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const appointmentData = {
+        appointmentId: urlParams.get('id') || 'N/A',
+        patientName: urlParams.get('patient') || 'N/A',
+        doctorName: urlParams.get('doctor') || 'N/A',
+        department: urlParams.get('dept') || 'N/A',
+        dateTime: urlParams.get('datetime') || 'N/A',
+        amount: urlParams.get('amount') || '0'
+    };
+
+    // Display appointment details
+    document.getElementById('appointmentId').textContent = appointmentData.appointmentId;
+    document.getElementById('patientName').textContent = appointmentData.patientName;
+    document.getElementById('doctorName').textContent = appointmentData.doctorName;
+    document.getElementById('department').textContent = appointmentData.department;
+    document.getElementById('dateTime').textContent = appointmentData.dateTime;
+    document.getElementById('amountPaid').textContent = '$' + appointmentData.amount;
+</script>
+</body>
+</html>
+

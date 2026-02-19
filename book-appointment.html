@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - MediCare</title>
+<!--    <link rel="stylesheet" th:href="@{/css/style.css}">-->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<!-- Header & Navigation -->
+<header>
+    <nav class="container">
+        <a href="/" class="logo">
+            <div class="logo-icon">⚕</div>
+            Rahat Care
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/book-appointment">Book Appointment</a></li>
+            <li><a href="/appointments">My Appointments</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<div class="container" style="padding: 3rem 0;">
+    <h1 class="section-title">Book Your Appointment</h1>
+
+    <div id="alertContainer"></div>
+
+    <div class="form-container">
+        <form id="appointmentForm">
+            <!-- Patient Information -->
+            <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; font-family: 'Crimson Pro', serif;">
+                📋 Patient Information
+            </h3>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="patientName">Full Name *</label>
+                    <input type="text" id="patientName" name="patientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address *</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="medicalHistory">Medical History (Optional)</label>
+                <textarea id="medicalHistory" name="medicalHistory" rows="3"
+                          placeholder="Any allergies, chronic conditions, or previous surgeries..."></textarea>
+            </div>
+
+            <!-- Department Selection -->
+            <h3 style="color: var(--primary-color); margin: 2rem 0 1.5rem; font-family: 'Crimson Pro', serif;">
+                🏥 Select Department
+            </h3>
+
+            <div class="form-group">
+                <label for="department">Department *</label>
+                <select id="department" name="department" required>
+                    <option value="">-- Choose a Department --</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Dermatology">Dermatology</option>
+                    <option value="Ophthalmology">Ophthalmology</option>
+                    <option value="Dentistry">Dentistry</option>
+                    <option value="General Medicine">General Medicine</option>
+                </select>
+            </div>
+
+            <!-- Doctor Selection -->
+            <h3 style="color: var(--primary-color); margin: 2rem 0 1.5rem; font-family: 'Crimson Pro', serif;">
+                👨‍⚕️ Select Doctor
+            </h3>
+
+            <div id="doctorsContainer" class="doctors-grid">
+                <!-- Doctors will be loaded here dynamically -->
+            </div>
+
+            <input type="hidden" id="doctorName" name="doctorName">
+            <input type="hidden" id="consultationFee" name="consultationFee">
+
+            <!-- Appointment Date & Time -->
+            <h3 style="color: var(--primary-color); margin: 2rem 0 1.5rem; font-family: 'Crimson Pro', serif;">
+                📅 Choose Date & Time
+            </h3>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="appointmentDate">Appointment Date *</label>
+                    <input type="date" id="appointmentDate" name="appointmentDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentTime">Appointment Time *</label>
+                    <input type="time" id="appointmentTime" name="appointmentTime" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="symptoms">Symptoms / Reason for Visit *</label>
+                <textarea id="symptoms" name="symptoms" rows="4" required
+                          placeholder="Please describe your symptoms or reason for consultation..."></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div style="text-align: center; margin-top: 2rem;">
+                <button type="submit" class="btn btn-success" id="submitBtn">
+                    Proceed to Payment
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Rahat Care - Medical Appointment System. All rights reserved.</p>
+        <p>Rahat Medical Care</p>
+    </div>
+</footer>
+
+<!--<script th:src="@{/js/booking.js}"></script>-->
+<script src="/booking.js"></script>
+</body>
+</html>
